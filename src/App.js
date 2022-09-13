@@ -23,7 +23,7 @@ function App() {
       }}
     >
       <button onClick={toRed} style={style}>
-        press me
+        Andrew is gaaaaaaaay.
       </button>
       {color === "blue" && <h2>BOOOOOOO!</h2>}
       {color === "red" && <h2>hello</h2>}

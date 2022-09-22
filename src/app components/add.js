@@ -1,7 +1,9 @@
-const Add = ({ increment }) => {
+const Add = ({ increment, ...rest }) => {
   return (
     <div>
-      <button onClick={increment}>+1</button>
+      <button onClick={increment} {...rest}>
+        +1
+      </button>
     </div>
   );
 };

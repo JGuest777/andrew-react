@@ -5,32 +5,22 @@ import { useState } from "react";
 // import Subtract from "./subtract";
 import PersonCard from "./People/personCardOne.js";
 import data from "./People/data";
-// create an array of objects called data with 5 indexes of a person name age and hobbies(array of strings)
-// render in a card (map to array) centered in middle of VP vertically and horizontally
-// when you click on the card, display(onClick-->display state) above the card the object props
-//each card is a seperate component ---> that displays the name of the person as the default state. Onclick --> change state to display person data using a switch
 
-//-Array of objects called data
-//-create 5 divs on the screen with default values from data array
-//-style 5 divs
-//create the card flip functionality using map and usestate
-//
+// add more data --> add new property to each person that is a sex: male/female
+// display sex property ---> if the person is male display backround color as blue, pink for female
 
 function App() {
-  //
-  //
-  //
   // const [count, setCount] = useState(0);
 
   // const increment = () => {
   //   setCount(count + 1);
-  // };
+  //
 
   // const decrement = () => {
   //   setCount(count - 1);
   // };
   //
-  //
+
   //
   // const [notes, setNotes] = useState([]);
   // const [title, setTitle] = useState("");
@@ -46,7 +36,6 @@ function App() {
   // const removeNote = (title) => {
   //   setNotes(notes.filter((note) => note.title !== title));
   // };
-  //
   //
   //
   const [displayName, setDisplayName] = useState("");

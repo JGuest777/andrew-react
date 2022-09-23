@@ -1,10 +1,13 @@
-const PersonCardOne = ({ data, showData, name }) => {
+const PersonCard = ({ name, age, hobbies, setDisplayName }) => {
   return (
-    <div className="card">
-      <h2>{name}</h2>
-      <button onClick={showData}>Show Data</button>
+    <div className="card" onClick={() => setDisplayName(name)}>
+      <p>{name}</p>
+      <p>{age}</p>
+      {hobbies.map((hobby) => (
+        <p>{hobby}</p>
+      ))}
     </div>
   );
 };
 
-export default PersonCardOne;
+export default PersonCard;

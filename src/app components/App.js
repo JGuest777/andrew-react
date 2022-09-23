@@ -1,13 +1,10 @@
 import "../styles/app.css";
 import { useState } from "react";
-import Add from "./add";
-import Display from "./display";
-import Subtract from "./subtract";
-import PersonCardOne from "./People/personCardOne.js";
-import PersonCardTwo from "./People/personCardTwo.js";
-import PersonCardThree from "./People/personCardThree.js";
-import PersonCardFour from "./People/personCardFour.js";
-import PersonCardFive from "./People/personCardFive.js";
+// import Add from "./add";
+// import Display from "./display";
+// import Subtract from "./subtract";
+import PersonCard from "./People/personCardOne.js";
+import data from "./People/data";
 // create an array of objects called data with 5 indexes of a person name age and hobbies(array of strings)
 // render in a card (map to array) centered in middle of VP vertically and horizontally
 // when you click on the card, display(onClick-->display state) above the card the object props
@@ -20,77 +17,54 @@ import PersonCardFive from "./People/personCardFive.js";
 //
 
 function App() {
-  const data = [
-    {
-      name: "John",
-      age: 24,
-      hobbies: ["Basketball", "Chess", "Drawing"],
-    },
-    {
-      name: "Mary",
-      age: 25,
-      hobbies: ["Soccer", "Wordle", "drinking"],
-    },
-    {
-      name: "Jacob",
-      age: 26,
-      hobbies: ["Eating", "Sleeping", "Shitting"],
-    },
-    {
-      name: "Madelyn",
-      age: 27,
-      hobbies: ["Cricket", "Pumpkin Spice", "Coding"],
-    },
-    {
-      name: "Joshua",
-      age: 28,
-      hobbies: ["Spikeball", "Surfing", "Break Dancing"],
-    },
-  ];
+  //
+  //
+  //
+  // const [count, setCount] = useState(0);
 
-  // const isDisplayed = false;
+  // const increment = () => {
+  //   setCount(count + 1);
+  // };
 
-  const showData = () => {
-    setName(
-      <div>
-        <h2>{data[0].name}</h2>
-        <p>{data[0].age}</p>
-        <p>{data[0].hobbies}</p>
-      </div>
-    );
-  };
+  // const decrement = () => {
+  //   setCount(count - 1);
+  // };
+  //
+  //
+  //
+  // const [notes, setNotes] = useState([]);
+  // const [title, setTitle] = useState("");
+  // const [body, setBody] = useState("");
 
-  const [name, setName] = useState("john");
+  // const addNote = (e) => {
+  //   e.preventDefault();
+  //   setNotes([...notes, { title, body }]);
+  //   setTitle("");
+  //   setBody("");
+  // };
 
-  // can i define "display"? like const display = "data[0].name"
-
-  const [count, setCount] = useState(0);
-
-  const increment = () => {
-    setCount(count + 1);
-  };
-  const decrement = () => {
-    setCount(count - 1);
-  };
-
-  const [notes, setNotes] = useState([]);
-  const [title, setTitle] = useState("");
-  const [body, setBody] = useState("");
-
-  const addNote = (e) => {
-    e.preventDefault();
-    setNotes([...notes, { title, body }]);
-    setTitle("");
-    setBody("");
-  };
-
-  const removeNote = (title) => {
-    setNotes(notes.filter((note) => note.title !== title));
-  };
+  // const removeNote = (title) => {
+  //   setNotes(notes.filter((note) => note.title !== title));
+  // };
+  //
+  //
+  //
+  const [displayName, setDisplayName] = useState("");
 
   return (
-    <div>
-      <div>
+    <div className="container">
+      <h1>{displayName}</h1>
+      <div className="card-container">
+        {data.map((person, i) => (
+          <PersonCard
+            key={i}
+            name={person.name}
+            age={person.age}
+            hobbies={person.hobbies}
+            setDisplayName={setDisplayName}
+          />
+        ))}
+        {/* <div>
         <h1>Counter App</h1>
         <Add increment={increment} className="test" abc="123" />
         <Display count={count} />
@@ -110,8 +84,8 @@ function App() {
               x
             </button>
           </div>
-        ))}
-        <p>Add note</p>
+        ))} */}
+        {/* <p>Add note</p>
         <form onSubmit={addNote}>
           <input value={title} onChange={(e) => setTitle(e.target.value)} />
           <textarea
@@ -121,14 +95,9 @@ function App() {
             }}
           ></textarea>
           <button>add note</button>
-        </form>
+        </form> */}
+        {/* </div> */}
       </div>
-      <h2>People</h2>
-      <PersonCardOne showData={showData} name={name} />
-      <PersonCardTwo data={data} />
-      <PersonCardThree data={data} />
-      <PersonCardFour data={data} />
-      <PersonCardFive data={data} />
     </div>
   );
 }

@@ -1,8 +1,12 @@
-const PersonCard = ({ name, age, hobbies, setDisplayName }) => {
+const PersonCard = ({ name, age, hobbies, setDisplayName, sex }) => {
   return (
-    <div className="card" onClick={() => setDisplayName(name)}>
+    <div
+      className={`card ${sex === "male" ? "male" : "female"}`}
+      onClick={() => setDisplayName(name)}
+    >
       <p>{name}</p>
       <p>{age}</p>
+      <p>{sex}</p>
       {hobbies.map((hobby) => (
         <p>{hobby}</p>
       ))}

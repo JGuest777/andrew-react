@@ -50,6 +50,7 @@ function App() {
             name={person.name}
             age={person.age}
             hobbies={person.hobbies}
+            sex={person.sex}
             setDisplayName={setDisplayName}
           />
         ))}

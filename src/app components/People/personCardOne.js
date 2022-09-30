@@ -1,15 +1,16 @@
-const PersonCard = ({ name, age, hobbies, setDisplayName, sex }) => {
+const PersonCard = ({
+  name,
+  calories,
+  scientificName,
+  location,
+  under150Calories,
+}) => {
   return (
-    <div
-      className={`card ${sex === "male" ? "male" : "female"}`}
-      onClick={() => setDisplayName(name)}
-    >
+    <div className="card">
       <p>{name}</p>
-      <p>{age}</p>
-      <p>{sex}</p>
-      {hobbies.map((hobby) => (
-        <p>{hobby}</p>
-      ))}
+      <p>{scientificName}</p>
+      <p>{calories.filter(() => under150Calories)} calories</p>
+      <p>{location}</p>
     </div>
   );
 };

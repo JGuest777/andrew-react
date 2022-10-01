@@ -1,16 +1,12 @@
-const PersonCard = ({
-  name,
-  calories,
-  scientificName,
-  location,
-  under150Calories,
-}) => {
+const PersonCard = ({ name, calories, scientificName, location }) => {
+  const toNumber = parseInt(calories);
+
   return (
     <div className="card">
       <p>{name}</p>
       <p>{scientificName}</p>
-      <p>{calories.filter(() => under150Calories)} calories</p>
-      <p>{location}</p>
+      <p>{toNumber} calories</p>
+      <p dangerouslySetInnerHTML={{ __html: location }}></p>
     </div>
   );
 };

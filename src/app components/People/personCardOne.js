@@ -1,8 +1,20 @@
-const PersonCard = ({ name, calories, scientificName, location }) => {
+const PersonCard = ({
+  name,
+  calories,
+  scientificName,
+  location,
+  truncateString,
+}) => {
   const toNumber = parseInt(calories);
 
   return (
-    <div className="card">
+    <div
+      className={`${calories <= 100 ? "cardLowCalories" : ""} ${
+        calories > 100 && calories <= 150 ? "cardRegularCalories" : ""
+      }
+          ${calories > 150 ? "cardHighCalories" : ""}
+      }`}
+    >
       <p>{name}</p>
       <p>{scientificName}</p>
       <p>{toNumber} calories</p>

@@ -5,6 +5,13 @@ import axios from "axios";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 
+//  homework:
+//  filter the cards from lowest to highest calories on click
+//  if the calories for the specie is under is under 90 change background color. create 3 style color ranges
+// position cards in 3x3 grid
+// truncate species location text have '...' if the text runs over using parameters
+// if number input causes no cards to appear have error message "no results found" ---> if filteredData = []
+
 function App() {
   const [data, setData] = useState([]);
   const [userInput, setUserInput] = useState(0);
@@ -14,7 +21,11 @@ function App() {
     const fetchPost = async () => {
       const res = await axios("https://www.fishwatch.gov/api/species");
 
-      setData(res.data);
+      setData(
+        res.data.sort((a, b) => {
+          return a.Calories - b.Calories;
+        })
+      );
       setFilteredData(res.data);
     };
 
@@ -36,8 +47,15 @@ function App() {
       species = data;
     }
 
-    setFilteredData(species);
+    setFilteredData(species.sort((a, b) => a - b));
+    console.log(filteredData);
+    if (filteredData === []) {
+      return `Sorry! No results found for fish species sorted by ${userInput}`;
+    }
   };
+
+  const truncateString = (input) =>
+    input?.length > 225 ? `${input.substring(0, 220)}...` : input;
 
   return (
     <div className="container">
@@ -84,14 +102,15 @@ function App() {
       >
         reset
       </Button>
-      <div className="card-container">
+      <div className="containerCard">
         {filteredData.map((species, i) => (
           <PersonCard
             key={i}
             name={species["Species Name"]}
             scientificName={species["Scientific Name"]}
             calories={species.Calories}
-            location={species.Location}
+            location={truncateString(species.Location)}
+            truncateString={truncateString}
           />
         ))}
       </div>

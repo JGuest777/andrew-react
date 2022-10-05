@@ -2,31 +2,6 @@ body {
   background-color: whitesmoke;
 }
 
-.card {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  /* height: 300px; */
-  margin: 1rem;
-  width: 300px;
-  text-align: center;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  background-color: rgb(0, 0, 0);
-  color: white;
-  transition: all 100ms ease-in-out;
-}
-
-.card:hover {
-  cursor: pointer;
-  transform: scale(1.1);
-  background-color: grey;
-}
-
-.card:not(:last-child) {
-  margin-right: 1rem;
-}
-
 .container {
   display: flex;
   justify-content: center;
@@ -34,19 +9,72 @@ body {
   flex-direction: column;
 }
 
-.card-container {
-  flex-direction: column;
-  padding: 1rem;
+.containerCard {
+  display: grid;
+  gap: 1px;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.cardLowCalories {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100vw;
+  margin: 1rem;
+  width: 300px;
+  text-align: center;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  background-color: rgb(236, 53, 43);
+  color: white;
+  transition: all 100ms ease-in-out;
 }
 
-.male {
-  background-color: blue;
+.cardRegularCalories {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem;
+  width: 300px;
+  text-align: center;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  background-color: rgb(12, 145, 182);
+  color: white;
+  transition: all 100ms ease-in-out;
 }
 
-.female {
-  background-color: pink;
+.cardHighCalories {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem;
+  width: 300px;
+  text-align: center;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  background-color: rgb(12, 188, 77);
+  color: white;
+  transition: all 100ms ease-in-out;
+}
+
+.cardLowCalories:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+  background-color: grey;
+}
+
+.cardRegularCalories:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+  background-color: grey;
+}
+
+.cardHighCalories:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+  background-color: grey;
+}
+
+.card:not(:last-child) {
+  margin-right: 1rem;
 }

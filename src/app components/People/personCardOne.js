@@ -1,24 +1,22 @@
-const PersonCard = ({
-  name,
-  calories,
-  scientificName,
-  location,
-  truncateString,
-}) => {
+const PersonCard = ({ name, calories, scientificName, location }) => {
   const toNumber = parseInt(calories);
+
+  const lessThanCardStyles = calories <= 100 ? "cardLowCalories" : "";
+  const regualrCardStlyes =
+    calories > 100 && calories <= 150 ? "cardRegularCalories" : "";
+  const highCardStyles = calories > 150 ? "cardHighCalories" : "";
 
   return (
     <div
-      className={`${calories <= 100 ? "cardLowCalories" : ""} ${
-        calories > 100 && calories <= 150 ? "cardRegularCalories" : ""
-      }
-          ${calories > 150 ? "cardHighCalories" : ""}
-      }`}
+      className={`${lessThanCardStyles} ${regualrCardStlyes} ${highCardStyles}`}
     >
       <p>{name}</p>
       <p>{scientificName}</p>
       <p>{toNumber} calories</p>
-      <p dangerouslySetInnerHTML={{ __html: location }}></p>
+      <p
+        className="truncate-line-clamp"
+        dangerouslySetInnerHTML={{ __html: location }}
+      ></p>
     </div>
   );
 };

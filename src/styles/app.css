@@ -9,10 +9,43 @@ body {
   flex-direction: column;
 }
 
-.containerCard {
-  display: grid;
-  gap: 1px;
-  grid-template-columns: repeat(3, 1fr);
+@media screen and (min-width: 1025px) {
+  .containerCard {
+    display: grid;
+    gap: 1px;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .containerCard {
+    display: grid;
+    gap: 1px;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  .containerCard {
+    display: grid;
+    gap: 1px;
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+.reset {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+}
+
+.truncate-line-clamp {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  width: 250px;
+  overflow: hidden;
 }
 
 .cardLowCalories {

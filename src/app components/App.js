@@ -6,11 +6,11 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 
 //  homework:
-//  filter the cards from lowest to highest calories on click
-//  if the calories for the specie is under is under 90 change background color. create 3 style color ranges
-// position cards in 3x3 grid
-// truncate species location text have '...' if the text runs over using parameters
-// if number input causes no cards to appear have error message "no results found" ---> if filteredData = []
+//
+// truncate string using CSS instead of JS
+// scale grid down with media queries 3-2-1
+// create button inside the error code to reset the whole app without neeeding to refresh browser and make it look pretty
+//
 
 function App() {
   const [data, setData] = useState([]);
@@ -48,14 +48,30 @@ function App() {
     }
 
     setFilteredData(species.sort((a, b) => a - b));
-    console.log(filteredData);
-    if (filteredData === []) {
-      return `Sorry! No results found for fish species sorted by ${userInput}`;
-    }
   };
 
-  const truncateString = (input) =>
-    input?.length > 225 ? `${input.substring(0, 220)}...` : input;
+  if (data.length > 1 && filteredData.length < 1) {
+    return (
+      <div>
+        <div className="reset">
+          <p>Sorry! No results found for fish species sorted by {userInput}</p>
+        </div>
+        <Button
+          onClick={() => {
+            handleClick("reset");
+          }}
+          style={{ marginTop: "1rem", justifyContent: "center" }}
+          variant="outlined"
+          color="secondary"
+        >
+          reset
+        </Button>
+      </div>
+    );
+  }
+
+  // const truncateString = (input) =>
+  //   input?.length > 225 ? `${input.substring(0, 220)}...` : input;
 
   return (
     <div className="container">
@@ -102,15 +118,14 @@ function App() {
       >
         reset
       </Button>
-      <div className="containerCard">
+      <div className="containerCard ">
         {filteredData.map((species, i) => (
           <PersonCard
             key={i}
             name={species["Species Name"]}
             scientificName={species["Scientific Name"]}
             calories={species.Calories}
-            location={truncateString(species.Location)}
-            truncateString={truncateString}
+            location={species.Location}
           />
         ))}
       </div>

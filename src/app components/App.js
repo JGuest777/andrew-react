@@ -5,12 +5,7 @@ import axios from "axios";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 
-//  homework:
-//
-// truncate string using CSS instead of JS
-// scale grid down with media queries 3-2-1
-// create button inside the error code to reset the whole app without neeeding to refresh browser and make it look pretty
-//
+
 
 function App() {
   const [data, setData] = useState([]);
@@ -54,7 +49,7 @@ function App() {
     return (
       <div>
         <div className="reset">
-          <p>Sorry! No results found for fish species sorted by {userInput}</p>
+          <p>Sorry! No results found for fish species sorted by {userInput}.</p>
         </div>
         <Button
           onClick={() => {
